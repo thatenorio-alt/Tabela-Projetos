@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Controle de Projetos</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    /* ===============================
+       FILTROS
+    =============================== */
+    .filtros {
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filtros label {
+      font-weight: bold;
+    }
+
+    .filtros select,
+    .filtros button {
+      margin-left: 5px;
+      padding: 4px;
+    }
+
+    /* ===============================
+       KPIs
+    =============================== */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .kpi {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      padding: 12px;
+      border-left: 6px solid #3f51b5;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .kpi span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* ===============================
+       TABELA
+    =============================== */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: #eee;
+    }
+
+    /* ===============================
+       IMPRESSÃO
+    =============================== */
+    @media print {
+      .filtros {
+        display: none;
+      }
+      body {
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Controle de Projetos</h1>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <label>
+      Contrato:
+      <select id="filtroContrato">
+        <option value="">Todos</option>
+      </select>
+    </label>
+<label>
+  Coordenação:
+  <select id="filtroCoordenacao">
+    <option value="">Todas</option>
+  </select>
+</label>
+    <label>
+      Tipo de Obra:
+      <select id="filtroTipo">
+        <option value="">Todos</option>
+        <option value="Linear">Linear</option>
+        <option value="Localizada">Localizada</option>
+      </select>
+    </label>
+    <label>
+      Previsão de Início:
+      <select id="filtroInicio">
+        <option value="">Todas</option>
+      </select>
+    </label>
+
+    <button id="limparFiltros">Limpar filtros</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi">
+      <strong>Frentes de Serviço</strong>
+      <span id="kpiFrentes">0</span>
+    </div>
+
+    <div class="kpi">
+      <strong>Extensão Linear Edital (m)</strong>
+      <span id="kpiEdital">0</span>
+    </div>
+
+    <div class="kpi">
+      <strong>Extensão Linear Executivo (m) - Projetado</strong>
+      <span id="kpiExec">0</span>
+    </div>
+
+    <div class="kpi">
+      <strong>Diferença Linear (m)</strong>
+      <span id="kpiDif">0</span>
+    </div>
+
+    <div class="kpi">
+      <strong>Obras Localizadas - Edital</strong>
+      <span id="kpiLoc">0</span>
+    </div>
+
+  </div>
+
+  <!-- TABELA -->
+  <div id="resultado"></div>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
